@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=phones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сергей Пятак — QA Engineer</title>
+  <meta name="description" content="QA Engineer / Mobile QA: iOS и Android, smoke и регресс, Jira, Zephyr, Charles/Proxyman. Опыт в Skyeng, ENGYM CORP, Stepbystep.watch." />
+  <meta name="theme-color" content="#0C1112" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c1112;
+      --panel: #111819;
+      --panel-2: #141d1e;
+      --ink: #eef2f1;
+      --muted: #93a3a1;
+      --line: rgba(238, 242, 241, 0.09);
+      --line-strong: rgba(238, 242, 241, 0.16);
+      --mint: #6fe3c4;
+      --mint-soft: rgba(111, 227, 196, 0.12);
+      --sand: #e9b872;
+      --display: "Space Grotesk", sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 60% 45% at 18% 8%, rgba(111, 227, 196, 0.10), transparent 60%),
+        radial-gradient(ellipse 45% 40% at 95% 85%, rgba(233, 184, 114, 0.07), transparent 55%),
+        var(--bg);
+    }
+    .backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      background-image: radial-gradient(rgba(238, 242, 241, 0.055) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(ellipse 90% 70% at 30% 20%, #000 20%, transparent 75%);
+    }
+
+    .shell {
+      width: min(100% - 2.5rem, 1200px);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 23.5rem 1fr;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 2.5rem 0 3rem;
+    }
+
+    /* ——— Left card ——— */
+    .aside {
+      position: sticky;
+      top: 2.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .id-card {
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      background: linear-gradient(168deg, var(--panel-2), var(--panel) 65%);
+      padding: 1.75rem 1.6rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .id-card::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--mint), rgba(111, 227, 196, 0) 70%);
+    }
+    .avatar-mono {
+      width: 3.25rem;
+      height: 3.25rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.85rem;
+      background: var(--mint-soft);
+      border: 1px solid rgba(111, 227, 196, 0.3);
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: var(--mint);
+      margin-bottom: 1.1rem;
+    }
+    .id-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.5rem;
+    }
+    .id-role {
+      margin: 0 0 0.9rem;
+      color: var(--mint);
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+    .id-lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .avail {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.15rem;
+      padding: 0.35rem 0.7rem 0.35rem 0.55rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 0 rgba(111, 227, 196, 0.6);
+      animation: pulse 2.4s var(--ease) infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(111, 227, 196, 0.55); }
+      70% { box-shadow: 0 0 0 0.5rem rgba(111, 227, 196, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(111, 227, 196, 0); }
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 0.9rem;
+      overflow: hidden;
+    }
+    .fact {
+      background: var(--panel);
+      padding: 0.95rem 0.85rem;
+    }
+    .fact b {
+      display: block;
+      font-family: var(--display);
+      font-size: 1.35rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .fact span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.3;
+      display: block;
+    }
+
+    .aside-links {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 0.7rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: rgba(17, 24, 25, 0.6);
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s var(--ease);
+    }
+    .link-row:hover {
+      border-color: rgba(111, 227, 196, 0.45);
+      color: var(--mint);
+      transform: translateX(3px);
+    }
+    .link-row em {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ——— Right column ——— */
+    .main { display: grid; gap: 2.75rem; padding-top: 0.5rem; }
+
+    .block-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+    .block-head h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--mint);
+    }
+    .block-head .rule {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .jobs { display: grid; gap: 0.9rem; }
+    .job {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(17, 24, 25, 0.55);
+      padding: 1.25rem 1.35rem;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .job:hover {
+      border-color: var(--line-strong);
+      background: rgba(20, 29, 30, 0.8);
+    }
+    .job.current { border-color: rgba(111, 227, 196, 0.28); }
+    .job-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.3rem 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .job-top h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 1.12rem;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .job-org {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .job-org b { color: var(--ink); font-weight: 600; }
+    .job-when {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 2rem;
+    }
+    .col-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin: 0 0 0.55rem;
+      font-weight: 600;
+    }
+    ul.points {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+    ul.points li {
+      position: relative;
+      padding-left: 0.95rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    ul.points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 0.3rem;
+      height: 0.3rem;
+      border-radius: 1px;
+      background: rgba(111, 227, 196, 0.75);
+    }
+
+    .stack-groups {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 2rem;
+    }
+    .stack-group h4 {
+      margin: 0 0 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 600;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 0.45rem;
+      color: var(--ink);
+      background: rgba(111, 227, 196, 0.05);
+    }
+
+    footer {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--line);
+      margin-top: 1rem;
+      padding-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: reveal 0.8s var(--ease) forwards;
+    }
+    .d1 { animation-delay: 0.08s; }
+    .d2 { animation-delay: 0.16s; }
+    .d3 { animation-delay: 0.24s; }
+    .d4 { animation-delay: 0.32s; }
+    @keyframes reveal { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+        padding-top: 1.75rem;
+      }
+      .aside { position: static; }
+      .cols, .stack-groups { grid-template-columns: 1fr; }
+      .id-name { font-size: 1.85rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; opacity: 1; transform: none; }
+      .dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <div class="shell">
+    <aside class="aside">
+      <div class="id-card reveal">
+        <div class="avatar-mono" aria-hidden="true">СП</div>
+        <h1 class="id-name">Сергей Пятак</h1>
+        <p class="id-role">Quality Assurance Engineer</p>
+        <p class="id-lead">
+          Mobile QA: iOS и Android, релизы, разбор клиент–серверных сценариев и понятные QA-репорты.
+        </p>
+        <span class="avail"><span class="dot" aria-hidden="true"></span> Открыт к предложениям</span>
+      </div>
+
+      <div class="facts reveal d1">
+        <div class="fact">
+          <b>6+</b>
+          <span>лет в Skyeng</span>
+        </div>
+        <div class="fact">
+          <b>150+</b>
+          <span>фич и задач в релизах</span>
+        </div>
+        <div class="fact">
+          <b>2</b>
+          <span>платформы: iOS, Android</span>
+        </div>
+      </div>
+
+      <div class="aside-links reveal d2">
+        <a class="link-row" href="mailto:doctdocta@gmail.com">
+          Email <em>doctdocta@gmail.com</em>
+        </a>
+        <a class="link-row" href="https://www.linkedin.com/in/pyatak-s" target="_blank" rel="noopener noreferrer">
+          LinkedIn <em>pyatak-s</em>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="reveal d1">
+        <div class="block-head">
+          <h2>Ключевой опыт</h2>
+          <span class="rule"></span>
+        </div>
+        <article class="job current">
+          <div class="job-top">
+            <div>
+              <h3>Quality Assurance Engineer</h3>
+              <p class="job-org"><b>Skyeng</b> · мобильное приложение (Learning Habit)</p>
+            </div>
+            <span class="job-when">март 2025 — август 2026</span>
+          </div>
+          <div class="cols">
+            <div>
+              <p class="col-label">Обязанности</p>
+              <ul class="points">
+                <li>Функциональное, smoke- и регрессионное тестирование iOS/Android: устройства, эмуляторы, TestFlight.</li>
+                <li>Онбординг и A/B, авторизация, словарь и тренировки, self-study, paywall и in-app подписки, пуши, WebRTC-уроки.</li>
+                <li>Тест-кейсы и чек-листы в Zephyr, тест-раны, дефекты в Jira с логами и сетевыми дампами.</li>
+                <li>Проверка API через Charles / Proxyman: контракты, миграции endpoint’ов, моки, негативные сценарии.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="col-label">Достижения</p>
+              <ul class="points">
+                <li>Стабильные релизы за счёт регулярных smoke- и регресс-прогонов по критичным сценариям.</li>
+                <li>Практика глубокой проверки API на прокси: сверка полей и ошибок, чек-листы на регресс контрактов.</li>
+                <li>Разбор сложных дефектов: гонки, аудио/видео на уроке, региональный billing, пуши, офлайн-словарь.</li>
+                <li>Расширил покрытие в Zephyr по новым фичам и сократил «серые зоны» на регрессе.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="reveal d2">
+        <div class="block-head">
+          <h2>Ранее</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="jobs">
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>Infrastructure Support Specialist</h3>
+                <p class="job-org"><b>Skyeng</b></p>
+              </div>
+              <span class="job-when">июль 2022 — март 2025</span>
+            </div>
+            <ul class="points">
+              <li>Техподдержка сотрудников, ведение тикетов в Jira, эскалация обращений.</li>
+              <li>Мониторинг доступности инфраструктуры и статусов учётных записей.</li>
+              <li>Подготовка доступов к информационным системам, документация во внутренней wiki.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>Technical Support Specialist</h3>
+                <p class="job-org"><b>Skyeng</b></p>
+              </div>
+              <span class="job-when">февраль 2020 — июль 2022</span>
+            </div>
+            <ul class="points">
+              <li>Диагностика и решение технических проблем клиентов в чатах, звонках и тикетах.</li>
+              <li>Тестирование платформы и передача багов в разработку.</li>
+              <li>Работа с CRM, Kibana и Redash, частично SQL.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>QA Manager</h3>
+                <p class="job-org"><b>ENGYM CORP</b></p>
+              </div>
+              <span class="job-when">ноя 2021 — дек 2021</span>
+            </div>
+            <ul class="points">
+              <li>Регрессионное и функциональное тестирование мобильных приложений.</li>
+              <li>Написание тест-кейсов, поиск багов на устройствах и эмуляторах.</li>
+              <li>Разбор обратной связи пользователей и помощь разработчикам в анализе ошибок.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <div>
+                <h3>QA Manager</h3>
+                <p class="job-org"><b>Stepbystep.watch</b></p>
+              </div>
+              <span class="job-when">сен 2020 — сен 2021</span>
+            </div>
+            <ul class="points">
+              <li>Тестирование приложения и написание шагов воспроизведения.</li>
+              <li>Техподдержка продукта и обработка пользовательских запросов.</li>
+              <li>Контроль задач разработки в Trello, документация в Excel и Miro.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal d3">
+        <div class="block-head">
+          <h2>Стек</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="stack-groups">
+          <div class="stack-group">
+            <h4>Платформы и сборки</h4>
+            <div class="chips">
+              <span class="chip">iOS</span>
+              <span class="chip">Android</span>
+              <span class="chip">TestFlight</span>
+              <span class="chip">Firebase / Crashlytics</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>Процесс и документация</h4>
+            <div class="chips">
+              <span class="chip">Jira</span>
+              <span class="chip">Zephyr</span>
+              <span class="chip">Confluence</span>
+              <span class="chip">Trello</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>API и отладка</h4>
+            <div class="chips">
+              <span class="chip">Charles Proxy</span>
+              <span class="chip">Proxyman</span>
+              <span class="chip">Postman</span>
+              <span class="chip">Chrome DevTools</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>Данные и аналитика</h4>
+            <div class="chips">
+              <span class="chip">Kibana</span>
+              <span class="chip">Redash / SQL</span>
+              <span class="chip">AppsFlyer</span>
+              <span class="chip">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="y"></span> Сергей Пятак</span>
+      <span>QA Engineer · iOS &amp; Android</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
