@@ -257,6 +257,7 @@
       background: rgba(255,255,255,.025);
     }
     .metric:first-child { grid-column: 1 / -1; }
+    .metrics.is-pair .metric:first-child { grid-column: auto; }
     .metric b {
       display: block;
       color: var(--accent);
@@ -380,8 +381,8 @@
       justify-content: center;
       gap: .4rem;
       width: 100%;
-      margin-top: .9rem;
-      padding: .7rem .8rem;
+      margin-top: .75rem;
+      padding: .6rem .8rem;
       border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
       border-radius: .8rem;
       background: color-mix(in srgb, var(--accent) 13%, transparent);
@@ -394,6 +395,82 @@
     }
     .deck-switch:hover { background: color-mix(in srgb, var(--accent) 22%, transparent); }
     .deck-switch i { font-style: normal; }
+
+    .stat-bars {
+      display: grid;
+      gap: .5rem;
+      margin-top: .85rem;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: .1rem .5rem;
+    }
+    .stat-row span {
+      color: #a0aab6;
+      font-size: .63rem;
+      line-height: 1.25;
+    }
+    .stat-row b {
+      color: var(--accent);
+      font-family: var(--display);
+      font-size: .72rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-track {
+      grid-column: 1 / -1;
+      height: .3rem;
+      margin-top: .18rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      overflow: hidden;
+    }
+    .stat-track i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .stat-note {
+      margin: .9rem 0 0;
+      color: #8d98a6;
+      font-size: .6rem;
+      line-height: 1.45;
+    }
+
+    .month-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: .18rem;
+      height: 10.5rem;
+      margin-top: 1rem;
+    }
+    .month-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: .22rem;
+      height: 100%;
+      min-width: 0;
+    }
+    .month-col i {
+      width: 100%;
+      max-width: 1.15rem;
+      min-height: 2px;
+      border-radius: .22rem .22rem 0 0;
+      background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 22%, transparent));
+    }
+    .month-col u,
+    .month-col s {
+      font-size: .48rem;
+      color: #8d98a6;
+      text-decoration: none;
+      font-variant-numeric: tabular-nums;
+    }
+    .month-col u { font-weight: 700; color: #b4bec9; }
 
     .deck-bar {
       display: flex;
@@ -535,6 +612,9 @@
                     <li>Charles / Proxyman: API-контракты, моки, миграции endpoint’ов.</li>
                     <li>Разбор прод- и саппорт-кейсов на клиенте, бэкенде и окружении.</li>
                   </ul>
+                  <button class="deck-switch" type="button" data-goto-deck="stats">
+                    Цифры по задачам <i aria-hidden="true">→</i>
+                  </button>
                 </div>
                 <div class="home-indicator"></div>
               </div>
@@ -777,6 +857,122 @@
           </div>
           <div class="phone-label">05 · Stepbystep.watch</div>
         </article>
+
+        <article class="phone-unit" data-deck="stats" hidden>
+          <div class="phone-frame">
+            <div class="phone">
+              <div class="screen" style="--accent:var(--cyan);--glow:rgba(115,233,221,.17)">
+                <div class="island"></div>
+                <div class="status"><span>09:41</span><span>● 5G 100%</span></div>
+                <div class="screen-content">
+                  <p class="app-kicker">Цифры</p>
+                  <h2 class="app-title">Объём<br />работы</h2>
+                  <p class="app-copy">Задачи мобильного приложения, где я вёл проверку и оставлял финальный QA-отчёт.</p>
+                  <div class="metrics">
+                    <div class="metric"><b>150</b><span>задач с моим QA-отчётом</span></div>
+                    <div class="metric"><b>16</b><span>направлений продукта</span></div>
+                    <div class="metric"><b>18</b><span>месяцев в мобильном QA</span></div>
+                  </div>
+                  <ul class="list">
+                    <li>Реальные устройства и симуляторы, обе платформы.</li>
+                    <li>В отчёте: что проверено, что нашёл, статус ретеста.</li>
+                  </ul>
+                </div>
+                <div class="home-indicator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">01 · Объём работы</div>
+        </article>
+
+        <article class="phone-unit" data-deck="stats" hidden>
+          <div class="phone-frame">
+            <div class="phone">
+              <div class="screen" style="--accent:var(--lime);--glow:rgba(201,247,111,.15)">
+                <div class="island"></div>
+                <div class="status"><span>09:41</span><span>● 5G 100%</span></div>
+                <div class="screen-content">
+                  <p class="app-kicker">Статистика</p>
+                  <h2 class="app-title">Крупные<br />фичи</h2>
+                  <div class="stat-bars">
+                    <div class="stat-row"><span>Главный экран и виджеты</span><b>29</b><div class="stat-track"><i style="width:100%"></i></div></div>
+                    <div class="stat-row"><span>Словарь и тренировки слов</span><b>22</b><div class="stat-track"><i style="width:76%"></i></div></div>
+                    <div class="stat-row"><span>Домашние задания</span><b>19</b><div class="stat-track"><i style="width:66%"></i></div></div>
+                    <div class="stat-row"><span>Оплаты и подписки</span><b>12</b><div class="stat-track"><i style="width:41%"></i></div></div>
+                    <div class="stat-row"><span>Авторизация и профиль</span><b>8</b><div class="stat-track"><i style="width:28%"></i></div></div>
+                    <div class="stat-row"><span>Брендинг приложения</span><b>7</b><div class="stat-track"><i style="width:24%"></i></div></div>
+                    <div class="stat-row"><span>Уроки и видеосвязь</span><b>6</b><div class="stat-track"><i style="width:21%"></i></div></div>
+                    <div class="stat-row"><span>Тренажёры и практика</span><b>6</b><div class="stat-track"><i style="width:21%"></i></div></div>
+                  </div>
+                  <p class="stat-note">Ещё 26 задач — онбординг, self-study, маркетинговые механики, офлайн и аналитика, уведомления, рекомендации и QA-процесс. Оставшиеся 15 — точечные баги и краши.</p>
+                </div>
+                <div class="home-indicator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">02 · Крупные фичи</div>
+        </article>
+
+        <article class="phone-unit" data-deck="stats" hidden>
+          <div class="phone-frame">
+            <div class="phone">
+              <div class="screen" style="--accent:var(--violet);--glow:rgba(169,153,255,.17)">
+                <div class="island"></div>
+                <div class="status"><span>09:41</span><span>● 5G 100%</span></div>
+                <div class="screen-content">
+                  <p class="app-kicker">Статистика</p>
+                  <h2 class="app-title">Платформы</h2>
+                  <p class="app-copy">Обе мобильные платформы параллельно, плюс серверная часть там, где фича этого требовала.</p>
+                  <div class="stat-bars">
+                    <div class="stat-row"><span>iOS</span><b>83</b><div class="stat-track"><i style="width:100%"></i></div></div>
+                    <div class="stat-row"><span>Android</span><b>60</b><div class="stat-track"><i style="width:72%"></i></div></div>
+                    <div class="stat-row"><span>Кросс-платформенное</span><b>5</b><div class="stat-track"><i style="width:6%"></i></div></div>
+                    <div class="stat-row"><span>Backend</span><b>2</b><div class="stat-track"><i style="width:3%"></i></div></div>
+                  </div>
+                  <div class="metrics is-pair">
+                    <div class="metric"><b>55%</b><span>задач на iOS</span></div>
+                    <div class="metric"><b>40%</b><span>задач на Android</span></div>
+                  </div>
+                </div>
+                <div class="home-indicator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">03 · Платформы</div>
+        </article>
+
+        <article class="phone-unit" data-deck="stats" hidden>
+          <div class="phone-frame">
+            <div class="phone">
+              <div class="screen" style="--accent:var(--orange);--glow:rgba(255,173,117,.15)">
+                <div class="island"></div>
+                <div class="status"><span>09:41</span><span>● 5G 100%</span></div>
+                <div class="screen-content">
+                  <p class="app-kicker">Статистика</p>
+                  <h2 class="app-title">Задачи<br />по месяцам</h2>
+                  <p class="app-copy">Пики совпадают с крупными релизами: редизайн главного экрана и запуск новых тренировок.</p>
+                  <div class="month-chart">
+                    <div class="month-col"><u>28</u><i style="height:97%"></i><s>авг</s></div>
+                    <div class="month-col"><u>18</u><i style="height:62%"></i><s>сен</s></div>
+                    <div class="month-col"><u>4</u><i style="height:14%"></i><s>окт</s></div>
+                    <div class="month-col"><u>8</u><i style="height:28%"></i><s>ноя</s></div>
+                    <div class="month-col"><u>2</u><i style="height:7%"></i><s>дек</s></div>
+                    <div class="month-col"><u>10</u><i style="height:34%"></i><s>фев</s></div>
+                    <div class="month-col"><u>9</u><i style="height:31%"></i><s>мар</s></div>
+                    <div class="month-col"><u>12</u><i style="height:41%"></i><s>апр</s></div>
+                    <div class="month-col"><u>29</u><i style="height:100%"></i><s>май</s></div>
+                    <div class="month-col"><u>4</u><i style="height:14%"></i><s>июн</s></div>
+                    <div class="month-col"><u>17</u><i style="height:59%"></i><s>июл</s></div>
+                    <div class="month-col"><u>9</u><i style="height:31%"></i><s>авг</s></div>
+                  </div>
+                  <p class="stat-note">Август 2025 — август 2026, всего 150 задач.</p>
+                </div>
+                <div class="home-indicator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">04 · По месяцам</div>
+        </article>
       </div>
     </section>
 
@@ -814,7 +1010,7 @@
       });
     }
 
-    // Две «колоды» экранов: основное портфолио и подробный опыт по компаниям.
+    // Колоды экранов: основное портфолио, опыт по компаниям и статистика по задачам.
     function setDeck(name) {
       allCards.forEach((card) => { card.hidden = card.dataset.deck !== name; });
       cards = allCards.filter((card) => card.dataset.deck === name);
