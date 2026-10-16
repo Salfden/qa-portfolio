@@ -237,7 +237,7 @@
             </div>
             <div id="common">
               <div class="task-buttons"><button class="task selected">Встречи</button><button class="task">Дежурство</button><button class="task">Прочее</button></div>
-              <input class="task-url" placeholder="Или вставьте ссылку на свою задачу" />
+              <input class="task-url" type="url" id="customTaskUrl" name="jira-task-url" autocomplete="off" aria-label="Ссылка на свою задачу" placeholder="Или вставьте ссылку на свою задачу" />
               <textarea class="comment" id="comment" placeholder="Что было сделано">Командный синк и разбор релиза</textarea>
               <button class="log" id="logTime">Залогировать</button>
               <div class="message" id="message"></div>
